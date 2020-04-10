@@ -5,7 +5,7 @@ This is the frontend part of the project.
 
 The project quick video demo is here: https://www.youtube.com/watch?v=n8vUdQlrNrI
 
-Theproject backend part is here: https://github.com/shanizlo/faceSmartBrainApi
+The project backend part is here: https://github.com/shanizlo/faceSmartBrainApi
 
 Frontend made with:
 * React
