@@ -1,3 +1,21 @@
+This is the frontend part of the project.
+
+The project quick video demo is here: https://www.youtube.com/watch?v=n8vUdQlrNrI
+
+Theproject backend part is here: https://github.com/shanizlo/faceSmartBrainApi
+
+Frontend made with:
+* React
+* Clarifai API for face recognition
+* Particles package for background animation
+
+Backend made with:
+* Nodejs
+* express, cors for apis and endpoints
+* bcrypt for password hashing
+* postgresql for database
+* knex for db queries
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
