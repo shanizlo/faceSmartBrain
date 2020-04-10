@@ -45,20 +45,7 @@ const initialState = {
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -114,6 +101,7 @@ onButtonSubmit = () => {
         .then(count => {
           this.setState(Object.assign(this.state.user, { entries: count }))
         })
+        .catch(console.log())
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
     })
@@ -126,7 +114,7 @@ onRouteChange = (route) => {
   } else if (route === 'home') {
     this.setState({isSignedIn: true})
   }
-    this.setState({route: route});
+  this.setState({route: route});
 }
   
 render() {  
@@ -154,7 +142,7 @@ render() {
         />
       </div>
     : (
-      this.state.route === 'signin' 
+      route === 'signin' 
       ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
       : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} /> 
       )
