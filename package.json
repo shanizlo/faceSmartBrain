@@ -12,7 +12,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-particles-js": "^2.7.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.1.2",
     "react-tilt": "^0.1.4",
     "serve": "^11.3.0",
     "tachyons": "^4.11.1"
