@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SimpleReactValidator from 'simple-react-validator';
 
 class Signin extends React.Component {
 	constructor(props) {
@@ -7,6 +8,7 @@ class Signin extends React.Component {
 			signInEmail: '',
 			signInPassword: ''
 		}
+		this.validator = new SimpleReactValidator();
 	}
 
 	onEmailChange  = (event) => {
@@ -18,6 +20,11 @@ class Signin extends React.Component {
 	}
 
 	onSubmitSignin = () => {
+		if (!this.validator.allValid()) {
+			this.validator.showMessages()
+			this.forceUpdate()
+			return
+		}
 		fetch('https://arcane-scrubland-98726.herokuapp.com/signin', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
@@ -51,6 +58,7 @@ class Signin extends React.Component {
 									id="email-address"
 									onChange={this.onEmailChange}
 								/>
+								{this.validator.message('email', this.state.signInEmail, 'required')}
 							</div>
 							<div className="mv3">
 								<label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
@@ -61,6 +69,7 @@ class Signin extends React.Component {
 									id="password"
 									onChange={this.onPasswordChange}
 								/>
+								{this.validator.message('password', this.state.signInPassword, 'required')}
 							</div>
 						</fieldset>
 						<div className="">
