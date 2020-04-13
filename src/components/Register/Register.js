@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SimpleReactValidator from 'simple-react-validator';
 
 class Register extends React.Component {
 	constructor(props) {
@@ -8,6 +9,7 @@ class Register extends React.Component {
 			password: '',
 			name: ''
 		}
+		this.validator = new SimpleReactValidator();
 	}
 
 	onNameChange  = (event) => {
@@ -23,6 +25,11 @@ class Register extends React.Component {
 	}
 
 	onSubmitSignin = () => {
+		if (!this.validator.allValid()) {
+			this.validator.showMessages()
+			this.forceUpdate()
+			return
+		}
 		fetch('https://arcane-scrubland-98726.herokuapp.com/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
@@ -57,6 +64,7 @@ class Register extends React.Component {
 									id="email-address"
 									onChange={this.onEmailChange}
 								/>
+								{this.validator.message('email', this.state.email, 'required')}
 							</div>
 							<div className="mt3">
 								<label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
@@ -67,6 +75,7 @@ class Register extends React.Component {
 									id="name"
 									onChange={this.onNameChange}
 								/>
+								{this.validator.message('name', this.state.name, 'required')}
 							</div>
 							<div className="mv3">
 								<label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
@@ -77,6 +86,7 @@ class Register extends React.Component {
 									id="password"
 									onChange={this.onPasswordChange}
 								/>
+								{this.validator.message('password', this.state.password, 'required')}
 							</div>
 						</fieldset>
 						<div className="">

@@ -15,6 +15,7 @@
     "react-scripts": "3.1.2",
     "react-tilt": "^0.1.4",
     "serve": "^11.3.0",
+    "simple-react-validator": "^1.4.6",
     "tachyons": "^4.11.1"
   },
   "engines": {
